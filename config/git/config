@@ -1,0 +1,32 @@
+[branch]
+autosetuprebase = always
+
+[color]
+ui = true
+
+[push]
+default = "tracking"
+
+[init]
+defaultBranch = "master"
+
+[user]
+name = Reuben
+email = "118594135+greuben92@users.noreply.github.com"
+signingKey = 43F9FC576550F62B!
+
+[diff]
+wsErrorHighlight = "all"
+
+[format]
+pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+
+[commit]
+gpgsign = true
+
+[core]
+editor = "vim"
+sshCommand = "ssh -i ~/.ssh/personal"
+
+[includeIf "gitdir:~/work/"]
+path = ~/.config/git/config-work

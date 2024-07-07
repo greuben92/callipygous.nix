@@ -12,5 +12,17 @@
         ];
       };
     };
+
+    devShells =
+      let
+        system = "x86_64-linux";
+        pkgs = import nixpkgs { inherit system; };
+      in {
+        ${system}.default = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            lua-language-server
+          ];
+        };
+      };
   };
 }

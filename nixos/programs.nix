@@ -22,10 +22,12 @@
     neovim
     tmux
     wl-clipboard
+    zig # Required to build treesitter parsers for neovim
   ];
 
   fonts.packages = with pkgs; [
     hermit
+    (nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "SourceCodePro" ]; })
   ];
 
   virtualisation.docker = {

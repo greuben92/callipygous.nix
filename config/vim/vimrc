@@ -1,0 +1,66 @@
+let g:mapleader = ","
+filetype plugin indent on
+syntax on
+
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+set backspace=indent,eol,start
+set noexpandtab autoindent
+set tabstop=4 shiftwidth=4 shiftround smarttab
+set nowrap linebreak
+set hidden
+set laststatus=2 display=lastline
+set showmode showcmd
+set incsearch ignorecase smartcase hlsearch
+if executable("rg")
+  set grepprg=rg\ --vimgrep\ --no-head\ --smart-case
+endif
+set number signcolumn=number
+set history=500 report=0
+set synmaxcol=200
+set listchars=trail:-,tab:\|\ 
+set nobackup nowritebackup noswapfile
+set undofile undodir=$HOME/.vim/undodir
+set wildmenu wildmode=list:longest
+set ttimeoutlen=50
+set splitright splitbelow
+set visualbell noerrorbells t_vb=
+set formatoptions+=j
+set formatoptions-=o
+set completeopt=menuone
+if has("textprop")
+  set completeopt+=popup
+endif
+set scrolloff=8
+
+nnoremap <silent> // :nohlsearch <cr>
+inoremap <C-u> <C-g>u<C-u>
+nnoremap 0 ^
+nnoremap ^ 0
+nmap Q <Nop>
+nmap Y y$
+nnoremap ' `
+nnoremap ` '
+nmap ]d :cnext<cr>
+nmap [d :cprev<cr>
+nmap <Leader>t :Files<Cr>
+nmap <Leader>b :Buffers<Cr>
+nmap <Leader>g :Rg<cr>
+
+let g:netrw_banner = 0
+
+call plug#begin("~/.vim/plugged")
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tomtom/tcomment_vim'
+Plug 'tommcdo/vim-lion'
+call plug#end()
+
+set termguicolors
+set background=dark
+colorscheme habamax

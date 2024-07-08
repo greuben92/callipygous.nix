@@ -26,6 +26,7 @@
   ];
 
   fonts.packages = with pkgs; [
+    noto-fonts-cjk-sans
     hermit
     (nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "SourceCodePro" ]; })
   ];

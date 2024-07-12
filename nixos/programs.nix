@@ -1,6 +1,11 @@
 { config, lib, pkgs, ... }:
 {
-  programs.fish.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableBashCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
   programs.gnupg.agent.enable = true;
   programs.direnv.enable = true;
 
@@ -49,7 +54,4 @@
       host all all ::1/128 trust
     '';
   };
-
-  programs.nix-index.enable = true;
-  programs.command-not-found.enable = false;
 }

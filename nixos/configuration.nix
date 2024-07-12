@@ -37,7 +37,7 @@
   users.users.reuben = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "storage" ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
   system.stateVersion = "24.05";

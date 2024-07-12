@@ -23,12 +23,14 @@
     tmux
     wl-clipboard
     zig # Required to build treesitter parsers for neovim
+    trash-cli
+    jq
   ];
 
   fonts.packages = with pkgs; [
     noto-fonts-cjk-sans
     hermit
-    (nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "SourceCodePro" ]; })
+    (nerdfonts.override { fonts = [ "CascadiaCode" "Iosevka" "JetBrainsMono" "SourceCodePro" "ComicShannsMono" ]; })
   ];
 
   virtualisation.docker = {
@@ -38,4 +40,16 @@
       setSocketVariable = true;
     };
   };
+
+  services.postgresql = {
+    enable = true;
+    authentication = pkgs.lib.mkOverride 10 ''
+      local all all trust
+      host all all 127.0.0.1/32 trust
+      host all all ::1/128 trust
+    '';
+  };
+
+  programs.nix-index.enable = true;
+  programs.command-not-found.enable = false;
 }

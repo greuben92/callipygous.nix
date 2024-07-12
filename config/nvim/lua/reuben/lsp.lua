@@ -12,7 +12,7 @@ end
 
 local setup = function(server, opts)
   server.setup(vim.tbl_deep_extend("force", {
-    autostart = false,
+    -- autostart = false,
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
     on_attach = on_attach
   }, opts or {}))
@@ -20,21 +20,18 @@ end
 
 setup(lspconfig.lua_ls)
 
-setup(lspconfig.tsserver, {
-  cmd = { "./node_modules/.bin/typescript-language-server", "--stdio" },
-})
+setup(lspconfig.tsserver)
 
-setup(lspconfig.svelte, {
-  cmd = { "./node_modules/.bin/svelteserver", "--stdio" },
-})
+setup(lspconfig.svelte)
 
 local prettier = {
   formatCanRange = true,
-  formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}",
+  formatCommand = "prettier --stdin-filepath ${INPUT}",
   formatStdin = true,
   rootMarkers = { ".prettierrc" },
 };
 lspconfig.efm.setup({
+  on_attach = on_attach,
   settings = {
     languages = {
       typescript = { prettier },
@@ -71,3 +68,5 @@ setup(lspconfig.hls, {
 })
 
 setup(lspconfig.ocamllsp)
+
+setup(lspconfig.phpactor)

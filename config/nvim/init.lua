@@ -59,7 +59,12 @@ vim.keymap.set("n", "[l", ":lprev<cr>")
 vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("c", "<c-n>", "<down>")
 vim.keymap.set("c", "<c-p>", "<up>")
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 
 require("lazy").setup("reuben/plugins")
 
-vim.cmd [[ colorscheme catppuccin ]]
+vim.cmd [[
+  set background=dark
+  colorscheme catppuccin
+]]

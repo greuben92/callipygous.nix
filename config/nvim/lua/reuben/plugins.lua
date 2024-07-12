@@ -27,6 +27,12 @@ return {
   "tpope/vim-repeat",
   "tpope/vim-surround",
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "zenbones-theme/zenbones.nvim",
+    dependencies = {
+      "rktjmp/lush.nvim"
+    },
+  },
 
   -- Languages
   "ziglang/zig.vim",

@@ -1,0 +1,50 @@
+# vim my beloved
+bindkey -v
+
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE="$HOME/.zsh_history"
+
+setopt HIST_FCNTL_LOCK
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+unsetopt HIST_EXPIRE_DUPS_FIRST
+setopt SHARE_HISTORY
+unsetopt EXTENDED_HISTORY
+
+bindkey '^r' history-incremental-search-backward
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+bindkey -s ^f "~/.dotfiles/bin/tmux-switch.sh\n"
+
+alias diff="git diff --no-index"
+alias gc="git commit"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gl="git log"
+alias grep="grep --color=auto"
+alias gs="git status"
+alias ls="ls --color=auto"
+alias la="ls -A"
+alias ll="ls -alF"
+
+export EDITOR=vim
+export VISUAL=vim
+export PAGER="less -FirSwX"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git*' --glob '!node_modules/*' --glob '!vendor/*'"
+
+NEWLINE=$'\n'
+PROMPT='%1(j.[%j] .)%B%F{blue}%~%f%b $vcs_info_msg_0_ ${NEWLINE}%# '
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr ' *'
+zstyle ':vcs_info:*' stagedstr ' +'
+zstyle ':vcs_info:git:*' formats '%F{green}(%b%u%c%a)'
+zstyle ':vcs_info:*' enable git
+
+source ~/.dotfiles/config/zsh/secret.zsh

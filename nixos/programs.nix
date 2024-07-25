@@ -30,6 +30,13 @@
     zig # Required to build treesitter parsers for neovim
     trash-cli
     jq
+    bat
+    clang
+    llvmPackages.bintools
+    rustup
+    qemu
+    eyedropper
+    kjv
   ];
 
   fonts.packages = with pkgs; [
@@ -40,10 +47,10 @@
 
   virtualisation.docker = {
     enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
+    # rootless = {
+    #   enable = true;
+    #   setSocketVariable = true;
+    # };
   };
 
   services.postgresql = {

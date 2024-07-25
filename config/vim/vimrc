@@ -59,8 +59,11 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'tommcdo/vim-lion'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 call plug#end()
 
 set termguicolors
 set background=dark
-colorscheme habamax
+colorscheme catppuccin_mocha
+
+let g:lion_squeeze_spaces=1

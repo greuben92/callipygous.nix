@@ -18,7 +18,7 @@ local setup = function(server, opts)
   }, opts or {}))
 end
 
-setup(lspconfig.lua_ls)
+-- setup(lspconfig.lua_ls)
 
 setup(lspconfig.tsserver)
 
@@ -40,9 +40,19 @@ lspconfig.efm.setup({
       json = { prettier },
       html = { prettier },
       css = { prettier },
+      php = {
+        {
+          prefix = "phpcs",
+          lintSource = "efm/phpcs",
+          lintCommand = "./vendor/bin/phpcs --no-colors --report=emacs",
+          lintStdin = true,
+          lintFormats = { "%.%#:%l:%c: %trror - %m", "%.%#:%l:%c: %tarning - %m" },
+          rootMarkers = { ".phpcs.xml", "phpcs.xml", ".phpcs.xml.dist", "phpcs.xml.dist", "composer.json" },
+        },
+      },
     },
   },
-  filetypes = { "typescript", "svelte", "javascript", "json", "html", "css" },
+  filetypes = { "typescript", "svelte", "javascript", "json", "html", "css", "php" },
   single_file_support = false,
   init_options = {
     documentFormatting = true,
@@ -69,4 +79,27 @@ setup(lspconfig.hls, {
 
 setup(lspconfig.ocamllsp)
 
-setup(lspconfig.phpactor)
+-- setup(lspconfig.phpactor)
+
+setup(lspconfig.elixirls, {
+  cmd = { "elixir-ls" },
+  settings = {
+    elixirLS = {
+      dialyzerEnabled = true,
+      fetchDeps = false,
+      enableTestLenses = false,
+      suggestSpecs = true,
+    },
+  },
+})
+
+-- setup(lspconfig.rust_analyzer, {
+--   settings = {
+--     ["rust-analyzer"] = {
+--       checkOnSave = {
+--         enable = true,
+--         command = "clippy",
+--       },
+--     }
+--   }
+-- })

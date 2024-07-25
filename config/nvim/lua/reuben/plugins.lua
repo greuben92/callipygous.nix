@@ -26,7 +26,17 @@ return {
   { "numToStr/Comment.nvim", opts = {} },
   "tpope/vim-repeat",
   "tpope/vim-surround",
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        no_italic = true,
+        no_bold = true,
+      })
+    end
+  },
   {
     "zenbones-theme/zenbones.nvim",
     dependencies = {
@@ -44,6 +54,7 @@ return {
       require("reuben/treesitter")
     end
   },
+  "tommcdo/vim-lion",
 
   -- Let there be VSCode
   {
@@ -76,11 +87,11 @@ return {
       require("reuben/cmp")
     end
   },
-  {
-    "folke/lazydev.nvim",
-    ft = "lua",
-    config = function()
-      require("lazydev").setup()
-    end
-  },
+  -- {
+  --   "folke/lazydev.nvim",
+  --   ft = "lua",
+  --   config = function()
+  --     require("lazydev").setup()
+  --   end
+  -- },
 }

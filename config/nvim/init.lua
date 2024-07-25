@@ -68,3 +68,5 @@ vim.cmd [[
   set background=dark
   colorscheme catppuccin
 ]]
+
+vim.g.lion_squeeze_spaces = 1

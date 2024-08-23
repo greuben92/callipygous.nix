@@ -14,7 +14,7 @@ set laststatus=2 display=lastline
 set showmode showcmd
 set incsearch ignorecase smartcase hlsearch
 if executable("rg")
-  set grepprg=rg\ --vimgrep\ --no-head\ --smart-case
+	set grepprg=rg\ --vimgrep\ --no-head\ --smart-case
 endif
 set number signcolumn=number
 set history=500 report=0
@@ -30,7 +30,7 @@ set formatoptions+=j
 set formatoptions-=o
 set completeopt=menuone
 if has("textprop")
-  set completeopt+=popup
+	set completeopt+=popup
 endif
 set scrolloff=8
 
@@ -47,6 +47,7 @@ nmap [d :cprev<cr>
 nmap <Leader>t :Files<Cr>
 nmap <Leader>b :Buffers<Cr>
 nmap <Leader>g :Rg<cr>
+nmap <Leader>vrc :Files $HOME/.dotfiles<Cr>
 
 let g:netrw_banner = 0
 
@@ -60,10 +61,12 @@ Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'tommcdo/vim-lion'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'romainl/Apprentice'
 call plug#end()
 
 set termguicolors
 set background=dark
-colorscheme catppuccin_mocha
+colorscheme apprentice
+hi! link LineNr Comment
 
 let g:lion_squeeze_spaces=1

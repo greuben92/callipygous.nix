@@ -7,7 +7,11 @@
     syntaxHighlighting.enable = true;
   };
   programs.gnupg.agent.enable = true;
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+  documentation.dev.enable = true;
 
   environment.systemPackages = with pkgs; [
     curl
@@ -17,26 +21,31 @@
     tree
     vim
     wget
+	man-pages
+	man-pages-posix
   ];
 
   users.users.reuben.packages = with pkgs; [
     brave
     chromium
     firefox
-    foot
-    neovim
     tmux
     wl-clipboard
-    zig # Required to build treesitter parsers for neovim
     trash-cli
     jq
     bat
-    clang
-    llvmPackages.bintools
-    rustup
     qemu
     eyedropper
     kjv
+    signal-desktop
+    anki
+    rpi-imager
+    pavucontrol
+	gimp
+	kitty
+	ffmpeg
+	yt-dlp
+	nixpkgs-fmt
   ];
 
   fonts.packages = with pkgs; [
